@@ -10,6 +10,9 @@ jobs:
 
     runs-on: self-hosted
 
+    env:
+      DOTNET_INSTALL_DIR: "./.dotnet"
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
