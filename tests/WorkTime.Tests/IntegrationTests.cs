@@ -7,15 +7,32 @@ public class IntegrationTests(WebApplicationFactory<Program> factory)
 {
     private readonly HttpClient _client = factory.CreateClient();
 
-    [Fact]
-    public async Task Get_Index_ReturnsOk()
+    [Theory]
+    [InlineData("GET", "/", "WorkTime is running")]
+    [InlineData("POST", "/clock-in", "Clocked in")]
+    [InlineData("POST", "/clock-out", "Clocked out")]
+    public async Task Get_Index_ReturnsOk(string method, string url, string expectedResponse)
     {
+        // Arrange
+        HttpResponseMessage response;
+
         // Act
-        var response = await _client.GetAsync("/");
+        switch (method)
+        {
+            case "GET":
+                response = await _client.GetAsync(url);
+                break;
+            case "POST":
+                response = await _client.PostAsync(url, null);
+                break;
+            default:
+                Assert.Fail();
+                return;
+        }
 
         // Assert
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
-        Assert.Equal("WorkTime is running.", responseString);
+        Assert.Equal(expectedResponse, responseString);
     }
 }

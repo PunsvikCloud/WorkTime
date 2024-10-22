@@ -11,8 +11,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/", () => "WorkTime is running.")
-    .WithName("Index")
+app.MapGet("/", () => "WorkTime is running")
+    .WithOpenApi();
+
+app.MapPost("/clock-in", () => "Clocked in")
+    .WithOpenApi();
+
+app.MapPost("/clock-out", () => "Clocked out")
     .WithOpenApi();
 
 app.Run();
