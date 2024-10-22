@@ -16,6 +16,6 @@ public class IntegrationTests(WebApplicationFactory<Program> factory)
         // Assert
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
-        Assert.Equal("Ok", responseString);
+        Assert.Equal("WorkTime is running.", responseString);
     }
 }

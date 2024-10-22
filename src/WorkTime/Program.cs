@@ -11,7 +11,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/", () => "Ok")
+app.MapGet("/", () => "WorkTime is running.")
     .WithName("Index")
     .WithOpenApi();
 
