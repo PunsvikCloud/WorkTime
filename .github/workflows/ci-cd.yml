@@ -34,7 +34,7 @@ jobs:
 
   docker-build-push:
     runs-on: self-hosted
-    needs: build
+#    needs: build
     permissions:
       contents: read
       packages: write
@@ -72,7 +72,7 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          context: src/WorkTime
+          context: .
           push: true
           platforms: linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
