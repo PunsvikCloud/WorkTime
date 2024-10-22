@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: work-time
+  labels:
+    app: work-time
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: work-time
+  template:
+    metadata:
+      labels:
+        app: work-time
+    spec:
+      containers:
+        - name: work-time
+          image: ghcr.io/punsvikcloud/worktime
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
