@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  namespace: work-time
+  name: work-time
+  labels:
+    app: work-time
+spec:
+  selector:
+    app: work-time
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

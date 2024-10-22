@@ -1,0 +1,23 @@
+﻿apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: work-time
+  name: work-time-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+spec:
+  tls:
+    - hosts:
+        - work.punsvik.net
+      secretName: work-time-tls
+  rules:
+    - host: work.punsvik.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: work-time
+                port:
+                  name: http
