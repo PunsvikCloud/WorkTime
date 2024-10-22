@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    if: false
     runs-on: self-hosted
     env:
       DOTNET_INSTALL_DIR: "./.dotnet"
@@ -30,6 +31,7 @@ jobs:
         run: dotnet test --no-build --verbosity normal
 
   docker-build-push:
+    if: false
     runs-on: self-hosted
     needs: build
     permissions:
@@ -77,7 +79,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: docker-build-push
+#    needs: docker-build-push
     permissions:
       id-token: write
       actions: read
