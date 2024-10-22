@@ -7,7 +7,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["WorkTime/WorkTime.csproj", "WorkTime/"]
+COPY ["src/WorkTime/WorkTime.csproj", "WorkTime/"]
 RUN dotnet restore "WorkTime/WorkTime.csproj"
 COPY . .
 WORKDIR "/src/WorkTime"
