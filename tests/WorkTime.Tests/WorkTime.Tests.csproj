@@ -28,7 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\src\WorkTime\WorkTime.csproj" />
+      <ProjectReference Include="..\..\src\WorkTime\WorkTime.csproj" />
     </ItemGroup>
 
 </Project>
